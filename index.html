@@ -2,40 +2,90 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Divyanshi Priya | Frontend Developer</title>
+<title>Daily Life - Divyanshi</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
-body{background:#0f172a;color:white}
-nav{display:flex;justify-content:space-between;padding:18px 20px;background:#1e293b;position:sticky;top:0}
-nav b{font-size:20px;color:#38bdf8}
-nav a{color:white;text-decoration:none;margin-left:12px;font-size:14px}
-.hero{padding:50px 20px;text-align:center;background:linear-gradient(135deg,#0ea5e9,#6366f1)}
-.hero h1{font-size:32px}
-.hero p{margin:10px 0;opacity:0.9}
-.btn{background:white;color:#0f172a;padding:11px 20px;border-radius:25px;display:inline-block;text-decoration:none;font-weight:bold;margin-top:10px}
-.section{padding:30px 20px;max-width:700px;margin:auto}
-.card{background:#1e293b;padding:20px;border-radius:16px;margin:12px 0}
-.card h3{color:#38bdf8}
-.tag{background:#334155;padding:6px 12px;border-radius:20px;display:inline-block;margin:4px;font-size:13px}
-.card a{color:#38bdf8;text-decoration:none;font-weight:bold}
-footer{text-align:center;padding:20px;opacity:0.6;font-size:13px}
+*{box-sizing:border-box;font-family:Arial}
+body{margin:0;background:#f1f5f9;padding:14px;color:#1e293b}
+h1{text-align:center}
+.card{background:white;padding:18px;border-radius:18px;max-width:520px;margin:12px auto;box-shadow:0 4px 15px rgba(0,0,0,0.08)}
+button{border:none;padding:10px 14px;border-radius:12px;font-weight:bold;margin:3px;cursor:pointer}
+input{padding:11px;border-radius:10px;border:1px solid #ddd;width:70%}
+.item{display:flex;justify-content:space-between;background:#f8fafc;padding:11px;border-radius:12px;margin:6px 0;align-items:center}
+.done{text-decoration:line-through;opacity:0.5}
 </style>
 </head>
 <body>
-<nav><b>Divyanshi.</b><div><a href="#projects">Projects</a><a href="#skills">Skills</a><a href="#contact">Contact</a></div></nav>
-<div class="hero">
-<h1>Hi, I'm Divyanshi Priya 👋</h1>
-<p>Frontend Developer | HTML • CSS • JavaScript<br>Bihar, India</p>
-<p>I build beautiful, responsive websites that actually work.</p>
-<a class="btn" href="#projects">View My Work ↓</a>
+<h1>🏠 My Daily Life</h1>
+<p style="text-align:center">Divyanshi's Real Life Manager • Rohtas, Bihar</p>
+
+<div class="card">
+<h3>📅 Exam Countdown</h3>
+<p>Exam Date: <input type="date" id="examDate" onchange="saveExam()" style="width:auto"></p>
+<h2 id="countdown" style="color:#e11d48">Date select karo!</h2>
+<p id="motivation"></p>
 </div>
-<div class="section" id="skills"><h2>💻 My Skills</h2><div class="card"><span class="tag">HTML5</span><span class="tag">CSS3</span><span class="tag">JavaScript</span><span class="tag">LocalStorage</span><span class="tag">GitHub Pages</span><span class="tag">Responsive Design</span></div></div>
-<div class="section" id="projects"><h2>🚀 My Projects</h2>
-<div class="card"><h3>💰 Money Tracker - Expense Manager</h3><p>Full Expense Tracker with Balance calculation, Filter, Delete & LocalStorage. Data refresh ke baad bhi save rehta hai.</p><p><br><b>Tech:</b> HTML, CSS, JavaScript, LocalStorage</p><a href="https://divyanshipriya8.github.io/-expense-tracker/" target="_blank">🔗 Live Demo →</a></div>
-<div class="card"><h3>🌍 My Fun World - Interactive Web App</h3><p>Drawing App + Quiz Game + Food Ordering System in one website.</p><p><br><b>Tech:</b> HTML, CSS, JavaScript</p><a href="https://divyanshipriya8.github.io/my-fun-world/" target="_blank">🔗 Live Demo →</a></div>
-<div class="card"><h3>🎀 My First Website</h3><p>My first deployed website. Learned GitHub, Hosting & Deployment.</p><p><br><b>Tech:</b> HTML, CSS</p><a href="https://divyanshipriya8.github.io/my-first-website/" target="_blank">🔗 Live Demo →</a></div>
+
+<div class="card">
+<h3>💧 Water Tracker</h3>
+<div style="text-align:center"><span style="font-size:28px" id="glasses">🤍🤍🤍🤍🤍🤍🤍🤍</span><p id="waterTxt">0 / 8 Glass</p>
+<button style="background:#0ea5e9;color:white" onclick="addWater()">+ 1 Glass Piya ✅</button>
+<button style="background:#fee2e2" onclick="resetWater()">Reset</button></div>
 </div>
-<div class="section" id="contact"><h2>📩 Contact Me</h2><div class="card"><p>📧 Email: divyanshipriya8@gmail.com</p><p>🐙 GitHub: github.com/divyanshipriya8</p><p>📍 Rohtas, Bihar, India</p><br><a href="https://github.com/divyanshipriya8" target="_blank">Visit My GitHub →</a></div></div>
-<footer>Made with ❤️ by Divyanshi Priya • © 2026</footer>
+
+<div class="card">
+<h3>🛒 Kirana / Ghar ka Saman</h3>
+<input id="kiranaInp" placeholder="Ex: Dudh, Aata, Sabzi...">
+<button style="background:#22c55e;color:white" onclick="addKirana()">Add +</button>
+<div id="kiranaList"></div>
+</div>
+
+<div class="card">
+<h3>✅ Aaj ke Kaam</h3>
+<input id="todoInp" placeholder="Ex: Padhai 2hr, Notes banana...">
+<button style="background:#6366f1;color:white" onclick="addTodo()">Add +</button>
+<div id="todoList"></div>
+</div>
+
+<div class="card">
+<h3>📚 Study Timer</h3>
+<h1 id="timer">25:00</h1>
+<button style="background:#f59e0b;color:white" onclick="startTimer()">Start ▶️</button>
+<button style="background:#ef4444;color:white" onclick="resetTimer()">Reset</button>
+</div>
+
+<script>
+let savedDate=localStorage.getItem('examDate')||'';
+if(savedDate) document.getElementById('examDate').value=savedDate;
+function saveExam(){localStorage.setItem('examDate',document.getElementById('examDate').value); updateCount();}
+function updateCount(){
+let d=document.getElementById('examDate').value; if(!d) return;
+let diff=Math.ceil((new Date(d)-new Date())/(1000*60*60*24));
+document.getElementById('countdown').innerText= diff>0 ? diff+' Din Baaki Hain!' : diff==0 ? 'Aaj Exam Hai! All The Best! 🍀' : 'Exam Ho Gaya!';
+document.getElementById('motivation').innerText= diff>0 ? 'Roz thoda-thoda padh lo 💪' : '';
+}
+updateCount();
+let water=parseInt(localStorage.getItem('water')||'0');
+function renderWater(){let g=''; for(let i=0;i<8;i++) g+= i<water?'💧':'🤍'; document.getElementById('glasses').innerText=g; document.getElementById('waterTxt').innerText=water+' / 8 Glass '+(water>=8?' - Ho gaya! 🎉':'');}
+function addWater(){ if(water<8){water++; localStorage.setItem('water',water); renderWater();} else alert('Ho gaya! 🎉');}
+function resetWater(){water=0; localStorage.setItem('water',water); renderWater();}
+renderWater();
+let kirana=JSON.parse(localStorage.getItem('kirana')||'[]');
+function addKirana(){let v=document.getElementById('kiranaInp').value; if(!v) return; kirana.push({t:v,done:false}); localStorage.setItem('kirana',JSON.stringify(kirana)); document.getElementById('kiranaInp').value=''; renderKirana();}
+function toggleKirana(i){kirana[i].done=!kirana[i].done; localStorage.setItem('kirana',JSON.stringify(kirana)); renderKirana();}
+function delKirana(i){kirana.splice(i,1); localStorage.setItem('kirana',JSON.stringify(kirana)); renderKirana();}
+function renderKirana(){let l=document.getElementById('kiranaList'); l.innerHTML=''; kirana.forEach((x,i)=>{l.innerHTML+=`<div class="item"><span class="${x.done?'done':''}" onclick="toggleKirana(${i})">${x.done?'✅':'⬜'} ${x.t}</span><button onclick="delKirana(${i})">❌</button></div>`});}
+renderKirana();
+let todos=JSON.parse(localStorage.getItem('todos')||'[]');
+function addTodo(){let v=document.getElementById('todoInp').value; if(!v) return; todos.push({t:v,done:false}); localStorage.setItem('todos',JSON.stringify(todos)); document.getElementById('todoInp').value=''; renderTodo();}
+function toggleTodo(i){todos[i].done=!todos[i].done; localStorage.setItem('todos',JSON.stringify(todos)); renderTodo();}
+function delTodo(i){todos.splice(i,1); localStorage.setItem('todos',JSON.stringify(todos)); renderTodo();}
+function renderTodo(){let l=document.getElementById('todoList'); l.innerHTML=''; todos.forEach((x,i)=>{l.innerHTML+=`<div class="item"><span class="${x.done?'done':''}" onclick="toggleTodo(${i})">${x.done?'✅':'⬜'} ${x.t}</span><button onclick="delTodo(${i})">❌</button></div>`});}
+renderTodo();
+let secs=25*60, timerInt=null;
+function renderTimer(){let m=Math.floor(secs/60), s=secs%60; document.getElementById('timer').innerText=(m<10?'0'+m:m)+':'+(s<10?'0'+s:s);}
+function startTimer(){ if(timerInt) return; timerInt=setInterval(()=>{secs--; renderTimer(); if(secs<=0){clearInterval(timerInt); timerInt=null; alert('25 min ho gaya! Break lo 🎉'); secs=25*60; renderTimer();}},1000);}
+function resetTimer(){clearInterval(timerInt); timerInt=null; secs=25*60; renderTimer();}
+renderTimer();
+</script>
 </body>
 </html>
